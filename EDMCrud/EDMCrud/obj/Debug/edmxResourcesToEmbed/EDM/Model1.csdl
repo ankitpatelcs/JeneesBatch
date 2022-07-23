@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CompanyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblcity">
+    <Key>
+      <PropertyRef Name="city_id" />
+    </Key>
+    <Property Name="city_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="city_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="state_id" Type="Int32" />
+    <NavigationProperty Name="tblemployees" Relationship="Self.FK_employee_tblcity" FromRole="tblcity" ToRole="tblemployee" />
+    <NavigationProperty Name="tblstate" Relationship="Self.FK_tblcity_state_id" FromRole="tblcity" ToRole="tblstate" />
+  </EntityType>
+  <EntityType Name="tblemployee">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="f_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="salary" Type="Int32" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="dob" Type="DateTime" Precision="3" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="state_id" Type="Int32" />
+    <Property Name="city_id" Type="Int32" />
+    <Property Name="hobbies" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="profileimg" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblcity" Relationship="Self.FK_employee_tblcity" FromRole="tblemployee" ToRole="tblcity" />
+    <NavigationProperty Name="tblstate" Relationship="Self.FK_employee_state_id" FromRole="tblemployee" ToRole="tblstate" />
+  </EntityType>
+  <EntityType Name="tblstate">
+    <Key>
+      <PropertyRef Name="state_id" />
+    </Key>
+    <Property Name="state_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="state_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblcities" Relationship="Self.FK_tblcity_state_id" FromRole="tblstate" ToRole="tblcity" />
+    <NavigationProperty Name="tblemployees" Relationship="Self.FK_employee_state_id" FromRole="tblstate" ToRole="tblemployee" />
+  </EntityType>
+  <Association Name="FK_employee_tblcity">
+    <End Role="tblcity" Type="Self.tblcity" Multiplicity="0..1" />
+    <End Role="tblemployee" Type="Self.tblemployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcity">
+        <PropertyRef Name="city_id" />
+      </Principal>
+      <Dependent Role="tblemployee">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblcity_state_id">
+    <End Role="tblstate" Type="Self.tblstate" Multiplicity="0..1" />
+    <End Role="tblcity" Type="Self.tblcity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblstate">
+        <PropertyRef Name="state_id" />
+      </Principal>
+      <Dependent Role="tblcity">
+        <PropertyRef Name="state_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employee_state_id">
+    <End Role="tblstate" Type="Self.tblstate" Multiplicity="0..1" />
+    <End Role="tblemployee" Type="Self.tblemployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblstate">
+        <PropertyRef Name="state_id" />
+      </Principal>
+      <Dependent Role="tblemployee">
+        <PropertyRef Name="state_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CompanyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblcities" EntityType="Self.tblcity" />
+    <EntitySet Name="tblemployees" EntityType="Self.tblemployee" />
+    <EntitySet Name="tblstates" EntityType="Self.tblstate" />
+    <AssociationSet Name="FK_employee_tblcity" Association="Self.FK_employee_tblcity">
+      <End Role="tblcity" EntitySet="tblcities" />
+      <End Role="tblemployee" EntitySet="tblemployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblcity_state_id" Association="Self.FK_tblcity_state_id">
+      <End Role="tblstate" EntitySet="tblstates" />
+      <End Role="tblcity" EntitySet="tblcities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employee_state_id" Association="Self.FK_employee_state_id">
+      <End Role="tblstate" EntitySet="tblstates" />
+      <End Role="tblemployee" EntitySet="tblemployees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<PartialViewDemo.EDM.tblemployee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.Partial("PIndex")
+@Html.Partial("PIndex")
+@Html.Partial("EmpIndex",Model)

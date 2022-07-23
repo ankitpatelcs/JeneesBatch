@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "bvalidator";
+}
+
+<script src="~/bvalidator/jquery.bvalidator.min.js"></script>
+
+// for choosen theme
+<script src="~/bvalidator/themes/presenters/default.min.js"></script>
+<script src="~/bvalidator/themes/gray/gray.js"></script>
+<link href="~/bvalidator/themes/gray/gray.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#frm').bValidator();
+    });
+</script>
+
+<h2>bvalidator</h2>
+
+<form id="frm" data-bvalidator-validate>
+    First Name: <input type="text" data-bvalidator="required" />
+                <input id="Submit1" type="submit" value="submit" />
+</form>
+

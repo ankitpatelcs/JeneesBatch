@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/Default/GetEmployees",
+            type: "GET",
+            dataType: "json",
+            success: function (emplist) {
+                $.each(emplist, function (key, item) {
+                    $("#tbl").append("<tr>"
+                        + "<td>" + item.emp_id + "</td>"
+                        + "<td>" + item.f_name + "</td>"
+                        + "<td>" + item.salary + "</td>"
+                        + "<td>" + item.email + "</td>"
+                        + "<td>" + item.mobile + "</td>"
+                        + "<td>" + item.gender + "</td>"
+                        + "<td><a href='/Default/Edit/" + item.emp_id + "'>Edit</a> | <a href='/Default/Delete/" + item.emp_id + "'>Delete</a></td>"
+                        + "</tr>");
+                });
+            }
+        });
+    });
+</script>
+
+<h2>Index</h2>
+<br />
+<p>
+    <a href="/Default/Create">Create New</a>
+</p>
+<br />
+<table id="tbl" class="table">
+    <tr>
+        <th>Employee ID</th>
+        <th>Fname Name</th>
+        <th>Salary</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Gender</th>
+    </tr>
+
+</table>

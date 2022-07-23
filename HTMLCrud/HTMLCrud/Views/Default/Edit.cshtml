@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    var item = ViewBag.empobj as HTMLCrud.EDM.tblemployee;
+}
+
+<h2>Edit</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+             <div class="form-group" hidden>
+                <label class="control-label">First Name</label>
+                <input type="text" name="txtid" value="@item.emp_id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">First Name</label>
+                <input type="text" name="txtfn" value="@item.f_name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Salary</label>
+                <input type="text" name="txtsal" value="@item.salary" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input type="text" name="txtem" value="@item.email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Password</label>
+                <input type="text" name="txtpass" value="@item.password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Mobile</label>
+                <input type="text" name="txtmob" value="@item.mobile" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Gender</label>
+                <input type="text" name="txtgen" value="@item.gender" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label"></label>
+                <input type="submit" value="Update" class="btn btn-info" />
+            </div>
+        </div>
+    }
+</div>
+<p>
+    <a href="/Default/Index">Back To List</a>
+</p>

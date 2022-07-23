@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "novis";
+}
+
+<link rel="stylesheet" href="~/nivoslider/themes/default/default.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="~/nivoslider/nivo-slider.css" type="text/css" media="screen" />
+
+<h2>novis</h2>
+
+<h1 style="margin-top:50px;" align="center">jQuery Nivo Slider Demo</h1>
+<div id="wrapper">
+    <div class="slider-wrapper theme-default">
+        <div id="slider" class="nivoSlider">
+            <img src="~/nivoslider/demo/images/toystory.jpg" data-thumb="~/nivoslider/demo/images/toystory.jpg" alt="" />
+            <a href="http://dev7studios.com">
+                <img src="~/nivoslider/demo/images/up.jpg" data-thumb="~/nivoslider/demo/images/up.jpg" alt="" title="" />
+            </a>
+            <img src="~/nivoslider/demo/images/walle.jpg" data-thumb="~/nivoslider/demo/images/walle.jpg" alt="" data-transition="slideInLeft" />
+            <img src="~/nivoslider/demo/images/nemo.jpg" data-thumb="~/nivoslider/demo/images/nemo.jpg" alt="" title="" />
+        </div>
+       
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="~/nivoslider/jquery.nivo.slider.js"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#slider').nivoSlider();
+    });
+</script>

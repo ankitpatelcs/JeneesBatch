@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    var item = ViewBag.empobj as HTMLCrud.EDM.tblemployee;
+}
+
+<h2>Delete</h2>
+<div class="container">
+
+    <dl class="dl-horizontal">
+        <dt>Employee ID</dt>
+        <dd>@item.emp_id</dd>
+        <dt>First Name</dt>
+        <dd>@item.f_name</dd>
+        <dt>Salary</dt>
+        <dd>@item.salary</dd>
+        <dt>Mobile</dt>
+        <dd>@item.mobile</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            <p>
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                <a href="/Default/Index">Back To List</a>
+            </p>
+        </div>
+    }
+
+</div>

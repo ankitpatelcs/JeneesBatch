@@ -1,0 +1,122 @@
+﻿@model EDMCrud.EDM.tblemployee
+
+@{
+    ViewBag.Title = "EmpDetails";
+}
+
+<h2>EmpDetails</h2>
+
+<div>
+    <h4>tblemployee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.f_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.f_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dob)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dob)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.state_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hobbies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hobbies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profileimg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profileimg)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
