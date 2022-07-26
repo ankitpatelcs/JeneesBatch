@@ -8,7 +8,7 @@ using ADOCrud.Models;
 
 namespace ADOCrud.Services
 {
-    public class CompanyService
+    public class CompanyService : ICompanyService
     {
         SqlConnection cn;
         public CompanyService()
@@ -18,7 +18,8 @@ namespace ADOCrud.Services
 
         public List<tblemployee> GetEmployees()
         {
-            SqlDataAdapter da = new SqlDataAdapter("select * from tblemployee", cn);
+            //SqlDataAdapter da = new SqlDataAdapter("select * from tblemployee", cn);
+            SqlDataAdapter da = new SqlDataAdapter("exec GetAllEmployees 0,0", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -45,7 +46,8 @@ namespace ADOCrud.Services
 
         public tblemployee GetEmployeeByID(int id)
         {
-            SqlDataAdapter da = new SqlDataAdapter("select * from tblemployee where emp_id=" + id, cn);
+            //SqlDataAdapter da = new SqlDataAdapter("select * from tblemployee where emp_id=" + id, cn);
+            SqlDataAdapter da = new SqlDataAdapter($"exec GetAllEmployees {id}, 1", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -63,6 +65,48 @@ namespace ADOCrud.Services
                 obj.dob = dt.Rows[0].Field<DateTime?>("dob");
             }
             return obj;
+        }
+
+        public void AddEmployee(tblemployee obj)
+        {
+            SqlCommand cmd = new SqlCommand("insert into tblemployee (f_name,salary,mobile,email,password,gender,address,dob) " +
+                "values(@fn,@sl,@mb,@em,@ps,@gn,@ad,@dob)", cn);
+            cmd.Parameters.AddWithValue("@fn", obj.f_name);
+            cmd.Parameters.AddWithValue("@sl", obj.salary);
+            cmd.Parameters.AddWithValue("@mb", obj.mobile);
+            cmd.Parameters.AddWithValue("@em", obj.email);
+            cmd.Parameters.AddWithValue("@ps", obj.password);
+            cmd.Parameters.AddWithValue("@gn", obj.gender);
+            cmd.Parameters.AddWithValue("@ad", obj.address);
+            cmd.Parameters.AddWithValue("@dob", obj.dob);
+            cn.Open();
+            cmd.ExecuteNonQuery();
+            cn.Close();
+        }
+        public void UpdateEmployee(tblemployee obj)
+        {
+            SqlCommand cmd = new SqlCommand("update tblemployee set f_name=@fn,salary=@sl,mobile=@mb,email=@em,password=@ps,gender=@gn,address=@ad,dob=@dob where emp_id=@id", cn);
+            cmd.Parameters.AddWithValue("@fn", obj.f_name);
+            cmd.Parameters.AddWithValue("@sl", obj.salary);
+            cmd.Parameters.AddWithValue("@id", obj.emp_id);
+            cmd.Parameters.AddWithValue("@mb", obj.mobile);
+            cmd.Parameters.AddWithValue("@em", obj.email);
+            cmd.Parameters.AddWithValue("@ps", obj.password);
+            cmd.Parameters.AddWithValue("@gn", obj.gender);
+            cmd.Parameters.AddWithValue("@ad", obj.address);
+            cmd.Parameters.AddWithValue("@dob", obj.dob);
+            cn.Open();
+            cmd.ExecuteNonQuery();
+            cn.Close();
+        }
+        
+        public void DeleteEmployee(int id)
+        {
+            SqlCommand cmd = new SqlCommand("delete from tblemployee where emp_id=@id", cn);
+            cmd.Parameters.AddWithValue("@id", id);
+            cn.Open();
+            cmd.ExecuteNonQuery();
+            cn.Close();
         }
     }
 }
