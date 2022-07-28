@@ -69,8 +69,10 @@ namespace ADOCrud.Services
 
         public void AddEmployee(tblemployee obj)
         {
-            SqlCommand cmd = new SqlCommand("insert into tblemployee (f_name,salary,mobile,email,password,gender,address,dob) " +
-                "values(@fn,@sl,@mb,@em,@ps,@gn,@ad,@dob)", cn);
+            //SqlCommand cmd = new SqlCommand("insert into tblemployee (f_name,salary,mobile,email,password,gender,address,dob) " +
+            //    "values(@fn,@sl,@mb,@em,@ps,@gn,@ad,@dob)", cn);
+
+            SqlCommand cmd = new SqlCommand("exec AddRecord @fn,@sl,@mb,@em,@ps,@gn,@ad,@dob", cn);
             cmd.Parameters.AddWithValue("@fn", obj.f_name);
             cmd.Parameters.AddWithValue("@sl", obj.salary);
             cmd.Parameters.AddWithValue("@mb", obj.mobile);
