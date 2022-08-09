@@ -1,0 +1,99 @@
+﻿@model IEnumerable<CreateApi.EDM.tblemployee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.f_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hobbies)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.profileimg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblcity.city_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblstate.state_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.f_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hobbies)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profileimg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblcity.city_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblstate.state_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.emp_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.emp_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.emp_id })
+        </td>
+    </tr>
+}
+
+</table>
